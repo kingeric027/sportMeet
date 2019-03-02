@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../../components/navbar/index";
 import Map from "../../components/Map2";
 import API from "../../utils/API";
+import auth0Client from "../../Auth/authentication";
 
 
 
@@ -68,25 +69,16 @@ class Start extends Component {
         });
     }
 
-   // componentDidMount(){
-   //     if (navigator && navigator.geolocation){
-   //         navigator.geolocation.getCurrentPosition(pos => {
-   //             const coords = pos.coords;
-   //             Geocode.fromLatLng( coords.latitude, coords.longitude).then(
-   //                 response => { 
-   //                     const address = response.results[0].formatted_address;
-   //                     this.setState({
-   //                         //address: ( address ) ? address : '',
-   //                         startPosition: {
-   //                             lat: coords.latitude,
-   //                             lng: coords.longitude
-   //                         }
-   //                     })
-   //                 }
-   //             )
-   //         });
-   //     } 
-   // }
+    componentDidMount(){
+        if(auth0Client.getProfile()){
+            this.setState({
+                user: auth0Client.getProfile().name
+            })
+        } else {
+            auth0Client.signIn();
+        }
+    };
+    
     render(){
         return (
         <div>
