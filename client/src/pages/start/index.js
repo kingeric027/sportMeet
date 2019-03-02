@@ -69,7 +69,7 @@ class Start extends Component {
         });
     }
 
-    componentDidMount(){
+ /*   componentDidMount(){
         if(auth0Client.getProfile()){
             this.setState({
                 user: auth0Client.getProfile().name
@@ -77,8 +77,8 @@ class Start extends Component {
         } else {
             auth0Client.signIn();
         }
-    };
-    
+    };  */
+
     render(){
         return (
         <div>
