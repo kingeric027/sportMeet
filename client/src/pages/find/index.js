@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import {Row, Col, Container} from "../../components/Grid";
 import API from "../../utils/API";
 import Navbar from "../../components/navbar/index";
+import Map from "../../components/findMap";
 import {GameList, GameListItem} from '../../components/gameItem';
 
 class Find extends Component {
@@ -42,17 +43,31 @@ class Find extends Component {
                         return (
                             <GameListItem
                             key = {game._id}
+                            user = {game.user}
                             sport = {game.sport}
                             players = {game.players}
                             time = {game.time}
                             date = {game.date}
                             address = {game.address}
+                            coords = {game.location}
+                            DeleteFunction = {() => this.deleteGame(game._id)}
                             >
                             </GameListItem>
 
                         )
                     })}
                 </GameList>
+                <div>
+                    <Map
+                    gamesArray = {this.state.games }
+                    google = {this.props.google}
+                    center = {{lat: 44.9740, lng: -93.227}}
+                    height = '300px'
+                    zoom = {12}
+                    >
+                    
+                    </Map>
+                </div>
             </Container>
         </div>
         )

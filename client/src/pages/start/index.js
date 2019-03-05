@@ -16,10 +16,11 @@ class Start extends Component {
         playerAmount:"",
         date:"",
         time:"",
-        user: "", 
-        startPosition:{
-            lat: 44.9740,
-            lng: 93.227
+        user: "Anonymous", 
+        address:"",
+        location:{
+            lat: "",
+            lng: ""
         }
     }
 
@@ -42,6 +43,7 @@ class Start extends Component {
 
     //function for submitting the data (still needs to be done)
     onSubmit = () => {
+        console.log("submit");
         
         const data = {
             sport: this.state.sport,
@@ -49,14 +51,14 @@ class Start extends Component {
             players: this.state.playerAmount,
             time: this.state.time,
             date: this.state.date,
-            locationLat: this.state.startPosition.lat,   // *
-            locationLng: this.state.startPosition.lng,   // *
-            address: "234 Clermont Street, St Paul MN",  // * Need to get location from map component
+            location: this.state.location,
+            address: this.state.address,  
             user: this.state.user
+            
         }
         console.log(data);
         API.saveGame(data);
-        window.location.href = '/find';
+        //window.location.href = '/find';
 
     };
 
@@ -67,6 +69,16 @@ class Start extends Component {
         this.setState({
             [name]: value
         });
+    }
+
+    onMapChange = (newlat, newlng, addr) => {
+        this.setState({
+            location: {
+                lat: newlat,
+                lng: newlng
+            },
+            address: addr
+        })
     }
 
  /*   componentDidMount(){
@@ -140,6 +152,8 @@ class Start extends Component {
                     center = {{lat: 44.9740, lng: -93.227}}
                     height = '300px'
                     zoom = {12}
+                    dragMarker = {true}
+                    onMapChange ={this.onMapChange}
                /> 
                 </div>
                 <button id = "back" onClick = {this.toggle}>Back</button>
