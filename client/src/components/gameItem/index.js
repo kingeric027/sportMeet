@@ -21,7 +21,7 @@ export function GameList({ children }) {
               <p>Spots Available: {props.players}</p>
               <p>{props.time} {props.date}</p>
               <p>{props.address}</p>
-              <button type="button" className="btn btn-outline-success" id={props.id}>Join Game</button>
+              <button type="button" className="btn btn-outline-success" id={props.id} onClick={props.JoinFunction}>Join Game</button>
               <button onClick = {props.DeleteFunction}>Delete</button>
             </Col>
           </Row>

@@ -31,6 +31,16 @@ class Find extends Component {
         .catch(err => console.log(err));
     }
 
+    updateGame = index => {
+        const gameToChange = this.state.games[index];
+        console.log(gameToChange);
+        gameToChange.players = gameToChange.players - 1;
+        console.log("new players: " + gameToChange.players);
+        API.updateGame(gameToChange._id, gameToChange)
+            .then(res => this.loadGames())
+            .catch(err => console.log(err));
+    }
+
     render(){
         return (
         <div>
@@ -51,6 +61,7 @@ class Find extends Component {
                             address = {game.address}
                             coords = {game.location}
                             DeleteFunction = {() => this.deleteGame(game._id)}
+                            JoinFunction = {() => this.updateGame(index)} //Need to decrease players by one
                             >
                             </GameListItem>
 

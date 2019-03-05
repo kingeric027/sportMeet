@@ -58,7 +58,7 @@ class Start extends Component {
         }
         console.log(data);
         API.saveGame(data);
-        //window.location.href = '/find';
+        window.location.href = '/find';
 
     };
 
@@ -100,7 +100,7 @@ class Start extends Component {
             
             {this.state.formToggle===0 ?(
                 <form>
-                <label for="spprt">Sport: </label>
+                <label htmlFor="sport">Sport: </label>
                 <select name = "sport" id = "selectSport" onChange = {this.handleInputChange}>
                     <option value="Basketball">Basketball</option>
                     <option value="Football">Football</option>
@@ -110,7 +110,7 @@ class Start extends Component {
                     <option value="Ultimate Frisbee">Ultimate Frisbee</option>
                 </select>
 
-            <label for="skill">What is your groups overall skill level?</label>
+            <label htmlFor="skill">What is your groups overall skill level?</label>
                 <select name = "skill" id = "selectSkill" onChange = {this.handleInputChange}>
                     <option value="1">1 Beginner</option>
                     <option value="2">2</option>
@@ -119,7 +119,7 @@ class Start extends Component {
                     <option value="5">5 Expert</option>
                 </select>
 
-            <label for="playerAmount">What is the maximum number of players you can add to your game?</label>
+            <label htmlFor="playerAmount">What is the maximum number of players you can add to your game?</label>
                 <select name = "playerAmount" id = "playerAmount" onChange = {this.handleInputChange}>
                     <option value="1">1</option>
                     <option value="2">2</option>
