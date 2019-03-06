@@ -22,11 +22,9 @@ var GameSchema = new Schema({
   date: {
     type: Date
   },
-  locationLat: {
-      type: Number
-  },
-  locationLng: {
-      type: Number
+  location:{
+    lat:{ type: Number },
+    lng:{ type: Number }
   },
   address: {
       type: String

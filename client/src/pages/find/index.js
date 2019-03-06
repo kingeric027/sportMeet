@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import {Row, Col, Container} from "../../components/Grid";
 import API from "../../utils/API";
 import Navbar from "../../components/navbar/index";
+import Map from "../../components/findMap";
 import {GameList, GameListItem} from '../../components/gameItem';
 
 class Find extends Component {
@@ -18,7 +19,7 @@ class Find extends Component {
 
     loadGames = () => {
         console.log("GET REQUEST")
-        API.getGames()
+        API.getFutureGames()
         .then(res => this.setState( {games:res.data} ))
         .catch(err => console.log(err));
     }
@@ -28,6 +29,16 @@ class Find extends Component {
         API.deleteGame(id)
         .then(res => this.loadGames())
         .catch(err => console.log(err));
+    }
+
+    updateGame = index => {
+        const gameToChange = this.state.games[index];
+        console.log(gameToChange);
+        gameToChange.players = gameToChange.players - 1;
+        console.log("new players: " + gameToChange.players);
+        API.updateGame(gameToChange._id, gameToChange)
+            .then(res => this.loadGames())
+            .catch(err => console.log(err));
     }
 
     render(){
@@ -42,17 +53,32 @@ class Find extends Component {
                         return (
                             <GameListItem
                             key = {game._id}
+                            user = {game.user}
                             sport = {game.sport}
                             players = {game.players}
                             time = {game.time}
                             date = {game.date}
                             address = {game.address}
+                            coords = {game.location}
+                            DeleteFunction = {() => this.deleteGame(game._id)}
+                            JoinFunction = {() => this.updateGame(index)} //Need to decrease players by one
                             >
                             </GameListItem>
 
                         )
                     })}
                 </GameList>
+                <div>
+                    <Map
+                    gamesArray = {this.state.games }
+                    google = {this.props.google}
+                    center = {{lat: 44.9740, lng: -93.227}}
+                    height = '300px'
+                    zoom = {12}
+                    >
+                    
+                    </Map>
+                </div>
             </Container>
         </div>
         )

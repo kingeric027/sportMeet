@@ -5,7 +5,7 @@ import Navbar from "../../components/navbar/index";
 import Map from "../../components/Map2";
 import API from "../../utils/API";
 import auth0Client from "../../Auth/authentication";
-
+import moment from 'moment';
 
 
 class Start extends Component {
@@ -16,10 +16,11 @@ class Start extends Component {
         playerAmount:"",
         date:"",
         time:"",
-        user: "", 
-        startPosition:{
-            lat: 44.9740,
-            lng: 93.227
+        user: "Anonymous", 
+        address:"",
+        location:{
+            lat: "",
+            lng: ""
         }
     }
 
@@ -42,17 +43,18 @@ class Start extends Component {
 
     //function for submitting the data (still needs to be done)
     onSubmit = () => {
+        console.log("submit");
         
         const data = {
             sport: this.state.sport,
             skill: this.state.skill,
             players: this.state.playerAmount,
-            time: this.state.time,
+            time: moment(this.state.time, "HH:MM A").format("h:MM A"),
             date: this.state.date,
-            locationLat: this.state.startPosition.lat,   // *
-            locationLng: this.state.startPosition.lng,   // *
-            address: "234 Clermont Street, St Paul MN",  // * Need to get location from map component
+            location: this.state.location,
+            address: this.state.address,  
             user: this.state.user
+            
         }
         console.log(data);
         API.saveGame(data);
@@ -67,6 +69,16 @@ class Start extends Component {
         this.setState({
             [name]: value
         });
+    }
+
+    onMapChange = (newlat, newlng, addr) => {
+        this.setState({
+            location: {
+                lat: newlat,
+                lng: newlng
+            },
+            address: addr
+        })
     }
 
  /*   componentDidMount(){
@@ -88,17 +100,17 @@ class Start extends Component {
             
             {this.state.formToggle===0 ?(
                 <form>
-                <label for="spprt">Sport: </label>
+                <label htmlFor="sport">Sport: </label>
                 <select name = "sport" id = "selectSport" onChange = {this.handleInputChange}>
                     <option value="Basketball">Basketball</option>
                     <option value="Football">Football</option>
                     <option value="Soccer">Soccer</option>
                     <option value="Hockey">Hockey</option>
-                    <option value="Tenis">Tenis</option>
+                    <option value="Tenis">Tennis</option>
                     <option value="Ultimate Frisbee">Ultimate Frisbee</option>
                 </select>
 
-            <label for="skill">What is your groups overall skill level?</label>
+            <label htmlFor="skill">What is your groups overall skill level?</label>
                 <select name = "skill" id = "selectSkill" onChange = {this.handleInputChange}>
                     <option value="1">1 Beginner</option>
                     <option value="2">2</option>
@@ -107,7 +119,7 @@ class Start extends Component {
                     <option value="5">5 Expert</option>
                 </select>
 
-            <label for="playerAmount">What is the maximum number of players you can add to your game?</label>
+            <label htmlFor="playerAmount">What is the maximum number of players you can add to your game?</label>
                 <select name = "playerAmount" id = "playerAmount" onChange = {this.handleInputChange}>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -115,8 +127,8 @@ class Start extends Component {
                     <option value="4">4</option>
                     <option value="5">5</option>
                     <option value="6">6</option>
-                    <option value="7">5</option>
-                    <option value="8">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
                 </select>
             
             <div>
@@ -140,6 +152,8 @@ class Start extends Component {
                     center = {{lat: 44.9740, lng: -93.227}}
                     height = '300px'
                     zoom = {12}
+                    dragMarker = {true}
+                    onMapChange ={this.onMapChange}
                /> 
                 </div>
                 <button id = "back" onClick = {this.toggle}>Back</button>

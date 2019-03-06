@@ -2,7 +2,7 @@ import React from 'react'
 import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
 import Autocomplete from 'react-google-autocomplete';
 import Geocode from "react-geocode";
-Geocode.setApiKey("AIzaSyC8IV86n_Ws2TLAJ3o8AThln2JLgxVRHCo");
+Geocode.setApiKey("AIzaSyCyfDoFnHAEssmLqnPDD_5qwrNyQk-8_nw");
 Geocode.enableDebug();
 class Map extends React.Component{
 constructor( props ){
@@ -19,12 +19,58 @@ constructor( props ){
    markerPosition: {
     lat: this.props.center.lat,
     lng: this.props.center.lng
-}
+},
+activeMarker:{}
   }
  }
 /**
   * Get the current address from the default map position and set those values in the state
   */
+
+ componentDidMount(){
+  if (navigator && navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(pos => {
+          const coords = pos.coords;
+          Geocode.fromLatLng( coords.latitude, coords.longitude).then(
+              response => { 
+                  const address = response.results[0].formatted_address;
+                  this.props.onMapChange(coords.latitude, coords.longitude, address);
+                  this.setState({
+                      address: ( address ) ? address : '',
+                      markerPosition: {
+                          lat: coords.latitude,
+                          lng: coords.longitude
+                      },
+                      mapPosition: {
+                        lat: coords.latitude,
+                        lng: coords.longitude
+                      }
+                  })
+              }
+          )
+      });
+  } else {
+      Geocode.fromLatLng(this.props.center.lat, this.props.center.lng).then(
+          response => {
+              const address = response.results[0].formatted_address;
+              this.props.onMapChange(this.props.center.lat, this.props.center.lng, address);
+              this.setState( {
+                  address: ( address ) ? address : '',
+                  mapPosition: {
+                    lat: this.props.center.lat,
+                    lng: this.props.center.lng,
+                  },
+                  markerPosition: {
+                    lat: this.props.center.lat,
+                    lng: this.props.center.lng
+                  }
+              });
+          }
+      )
+  }
+}
+
+  /*
  componentDidMount() {
   Geocode.fromLatLng( this.state.mapPosition.lat , this.state.mapPosition.lng ).then(
    response => {
@@ -48,6 +94,8 @@ constructor( props ){
    }
   );
  };
+*/
+
 /**
   * Component should only update ( meaning re-render ), when the user selects the address, or drags the pin
   *
@@ -145,6 +193,7 @@ const address = place.formatted_address,
    state = this.getState( addressArray ),
    latValue = place.geometry.location.lat(),
    lngValue = place.geometry.location.lng();
+   this.props.onMapChange(latValue, lngValue, address);
 // Set these values in the state.
   this.setState({
    address: ( address ) ? address : '',
@@ -180,11 +229,16 @@ Geocode.fromLatLng( newLat , newLng ).then(
      city = this.getCity( addressArray ),
      area = this.getArea( addressArray ),
      state = this.getState( addressArray );
+     this.props.onMapChange(newLat, newLng, address);
 this.setState( {
      address: ( address ) ? address : '',
      area: ( area ) ? area : '',
      city: ( city ) ? city : '',
-     state: ( state ) ? state : ''
+     state: ( state ) ? state : '',
+     markerPosition: {
+       lat: newLat,
+       lng: newLng
+     }
     } )
    },
    error => {
@@ -210,16 +264,16 @@ const AsyncMap = withScriptjs(
         marginBottom: '100px'
        }}
        onPlaceSelected={ this.onPlaceSelected }
-       types={[('geocode')]}
+       types={['geocode']}
       />
 {/*Marker*/}
-      <Marker google={this.props.google}
+  <Marker google={this.props.google}
        name={'Dolores park'}
-          draggable={true}
+          draggable={this.props.dragMarker}
           onDragEnd={ this.onMarkerDragEnd }
              position={{ lat: this.state.markerPosition.lat, lng: this.state.markerPosition.lng }}
       />
-      <Marker />
+<Marker />
 {/* InfoWindow on top of marker */}
       <InfoWindow
        onClose={this.onInfoWindowClose}
@@ -228,7 +282,7 @@ const AsyncMap = withScriptjs(
        <div>
         <span style={{ padding: 0, margin: 0 }}>{ this.state.address }</span>
        </div>
-      </InfoWindow>
+    </InfoWindow>
 </GoogleMap>
 )
    )
@@ -237,14 +291,13 @@ let map;
   if( this.props.center.lat !== undefined ) {
    map = <div>
      <div>
-     
       <div className="form-group">
        <label htmlFor="">Address</label>
        <input type="text" name="address" className="form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.address }/>
       </div>
      </div>
      <AsyncMap
-      googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8IV86n_Ws2TLAJ3o8AThln2JLgxVRHCo&libraries=places"
+      googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyfDoFnHAEssmLqnPDD_5qwrNyQk-8_nw&libraries=places"
       loadingElement={
        <div style={{ height: `100%` }} />
       }
