@@ -106,7 +106,7 @@ class Start extends Component {
                     <option value="Football">Football</option>
                     <option value="Soccer">Soccer</option>
                     <option value="Hockey">Hockey</option>
-                    <option value="Tenis">Tenis</option>
+                    <option value="Tenis">Tennis</option>
                     <option value="Ultimate Frisbee">Ultimate Frisbee</option>
                 </select>
 
@@ -127,8 +127,8 @@ class Start extends Component {
                     <option value="4">4</option>
                     <option value="5">5</option>
                     <option value="6">6</option>
-                    <option value="7">5</option>
-                    <option value="8">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
                 </select>
             
             <div>
