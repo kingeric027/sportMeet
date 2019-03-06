@@ -5,7 +5,7 @@ import Navbar from "../../components/navbar/index";
 import Map from "../../components/Map2";
 import API from "../../utils/API";
 import auth0Client from "../../Auth/authentication";
-
+import moment from 'moment';
 
 
 class Start extends Component {
@@ -49,7 +49,7 @@ class Start extends Component {
             sport: this.state.sport,
             skill: this.state.skill,
             players: this.state.playerAmount,
-            time: this.state.time,
+            time: moment(this.state.time, "HH:MM A").format("h:MM A"),
             date: this.state.date,
             location: this.state.location,
             address: this.state.address,  
