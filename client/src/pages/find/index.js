@@ -19,7 +19,7 @@ class Find extends Component {
 
     loadGames = () => {
         console.log("GET REQUEST")
-        API.getGames()
+        API.getFutureGames()
         .then(res => this.setState( {games:res.data} ))
         .catch(err => console.log(err));
     }
