@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom" ;
 import {Row, Col, Container} from "../../components/Grid";
 import API from "../../utils/API";
 import Navbar from "../../components/navbar/index";
