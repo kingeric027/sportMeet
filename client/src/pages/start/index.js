@@ -24,8 +24,8 @@ class Start extends Component {
         }
     }
 
-    // Can we add function to get local position here and pass it in as a prop?
-    getLocal = () => {
+    componentDidMount(){
+        console.log("auth0 Client: " + auth0Client.getProfile);
 
     }
 
