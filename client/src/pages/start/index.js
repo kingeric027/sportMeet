@@ -24,11 +24,6 @@ class Start extends Component {
         }
     }
 
-    componentDidMount(){
-        console.log("auth0 Client: " + auth0Client.getProfile);
-
-    }
-
     toggle = event =>{
         if(event.target.id === "next"){  //Go to map
             this.setState({
