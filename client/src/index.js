@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import history from './components/history/index';
 
 import {BrowserRouter} from 'react-router-dom';
 
@@ -24,7 +25,6 @@ const checkJwt = jwt({
   issuer: `https://kingeric.auth0.com/`,
   algorithms: ['RS256']
 });
-
 
 
 ReactDOM.render(
