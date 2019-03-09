@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../../components/navbar/index";
 import Map from "../../components/Map2";
 import API from "../../utils/API";
-
+import auth0Client from '../../Auth/authentication';
 import moment from 'moment';
 
 
@@ -77,7 +77,7 @@ class Start extends Component {
         })
     }
 
- /*   componentDidMount(){
+    componentDidMount(){
         if(auth0Client.getProfile()){
             this.setState({
                 user: auth0Client.getProfile().name
@@ -85,7 +85,7 @@ class Start extends Component {
         } else {
             auth0Client.signIn();
         }
-    };  */
+    }; 
 
     render(){
         return (

@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import auth0Client from '../../Auth/authentication';
 
 
 class Home extends Component {
+    componentDidMount(){
+        if(!auth0Client.isAuthenticated()){
+            auth0Client.signIn();
+        }
+    }
     render() {
         return (
         <div>

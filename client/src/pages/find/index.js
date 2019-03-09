@@ -34,6 +34,9 @@ class Find extends Component {
 
 
     updateGame = index => {
+        if(!auth0Client.isAuthenticated()){  //If not logged in make user log in before joining game.
+            auth0Client.signIn();
+        }
         const gameToChange = this.state.games[index];
         console.log(gameToChange);
         gameToChange.players = gameToChange.players - 1;
