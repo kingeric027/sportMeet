@@ -5,7 +5,7 @@ import Home from "./pages/home/Home";
 import Start from "./pages/start/index";
 import Find from "./pages/find/index";
 import Callback from './pages/callback/index';
-
+import ThisGame from './pages/ThisGame/index';
 //import logo from './logo.svg';
 import './App.css';
 import auth0Client from './Auth/authentication';
@@ -38,6 +38,7 @@ class App extends Component {
         <Route exact path='/start' component={Start}/>
         <Route exact path='/find' component={Find}/>
         <Route exact path='/callback' component={Callback}/>
+        <Route exact path="/games/:id" component={ThisGame}/>
       </div>
     );
   }
