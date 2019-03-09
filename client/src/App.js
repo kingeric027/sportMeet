@@ -6,7 +6,6 @@ import Start from "./pages/start/index";
 import Find from "./pages/find/index";
 import Callback from './pages/callback/index';
 import ThisGame from './pages/ThisGame/index';
-
 //import logo from './logo.svg';
 import './App.css';
 import auth0Client from './Auth/authentication';

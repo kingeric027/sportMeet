@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import Geocode from "react-geocode";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Navbar from "../../components/navbar/index";
 import Map from "../../components/Map2";
 import API from "../../utils/API";
 import auth0Client from '../../Auth/authentication';
 import moment from 'moment';
+
+
 
 
 class Start extends Component {
@@ -14,6 +16,7 @@ class Start extends Component {
         sport:"",
         skill:"",
         playerAmount:"",
+        playerArray:[],
         date:"",
         time:"",
         user: "Anonymous", 
@@ -23,7 +26,6 @@ class Start extends Component {
             lng: ""
         }
     }
-
 
     toggle = event =>{
         if(event.target.id === "next"){  //Go to map
@@ -37,6 +39,8 @@ class Start extends Component {
         }
     }
 
+ 
+    
     //function for submitting the data (still needs to be done)
     onSubmit = () => {
         console.log("submit");
@@ -45,6 +49,7 @@ class Start extends Component {
             sport: this.state.sport,
             skill: this.state.skill,
             players: this.state.playerAmount,
+            playerArray: this.state.playerArray,
             time: moment(this.state.time, "HH:MM A").format("h:MM A"),
             date: this.state.date,
             location: this.state.location,
@@ -54,8 +59,7 @@ class Start extends Component {
         }
         console.log(data);
         API.saveGame(data);
-        window.location.href = '/find';
-
+        
     };
 
     //Function for updating the state as the dropdowns are updated
@@ -88,6 +92,15 @@ class Start extends Component {
     }; 
 
     render(){
+        const Button = withRouter(({ history }) => (
+            <button
+              type='button'
+              className = "btn btn-primary btn-lg btn-block"
+             onClick={() => {this.onSubmit(); history.push('/find') }} 
+            >
+              Submit
+            </button>
+          ))
         return (
         <div>
             <Navbar></Navbar>
@@ -152,8 +165,10 @@ class Start extends Component {
                     onMapChange ={this.onMapChange}
                /> 
                 </div>
-                <button id = "back" onClick = {this.toggle}>Back</button>
-                <button type="button" class="btn btn-primary btn-lg btn-block" onClick = {this.onSubmit}>Submit</button>
+                
+               <button id = "back" onClick={this.togglet}>Back</button> 
+               <Button></Button> 
+               {/* <button type="button" class="btn btn-primary btn-lg btn-block" onClick = { this.onSubmit}>Submit</button> */}
                 </div>
             )}
         
