@@ -24,6 +24,7 @@ class Start extends Component {
         }
     }
 
+
     toggle = event =>{
         if(event.target.id === "next"){  //Go to map
             this.setState({

@@ -3,6 +3,19 @@ import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import auth0Client from "../../Auth/authentication";
 
+// this also works with react-router-native
+
+//cant use a link here
+const Link1 = withRouter(({ history }) => (
+  <Link className = "navbar-brand"
+    //type='button'
+    onClick={() => { history.push('/') }}
+    to ="/"
+  >
+    SportMeet
+  </Link>
+))
+
 function NavBar(props) {
     const signOut = () => {
         auth0Client.signOut();
@@ -10,9 +23,7 @@ function NavBar(props) {
     };
     return (
         <nav className="navbar navbar-dark bg-primary fixed-top">
-          <Link className="navbar-brand" to="/">
-            SportMeet
-          </Link>
+        <Link1></Link1>
           {
             !auth0Client.isAuthenticated() &&
             <button className="btn btn-dark" onClick={auth0Client.signIn}>Sign In</button>
