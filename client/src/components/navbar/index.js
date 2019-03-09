@@ -42,7 +42,7 @@ function NavBar(props) {
         props.history.replace('/');
     };
     return (
-        <nav className="navbar navbar-dark bg-primary fixed-top">
+        <nav className="navbar navbar-dark bg-primary">
         <HomeLink></HomeLink>
 
         <StartLink></StartLink>
