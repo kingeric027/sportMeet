@@ -6,6 +6,7 @@ import API from "../../utils/API";
 import Navbar from "../../components/navbar/index";
 import Map from "../../components/findMap";
 import {GameList, GameListItem} from '../../components/gameItem';
+import auth0Client from "../../Auth/authentication";
 
 class Find extends Component {
     state = {
@@ -31,11 +32,14 @@ class Find extends Component {
         .catch(err => console.log(err));
     }
 
+
     updateGame = index => {
         const gameToChange = this.state.games[index];
         console.log(gameToChange);
         gameToChange.players = gameToChange.players - 1;
+        gameToChange.playersArray.push( auth0Client.getProfile().name )
         console.log("new players: " + gameToChange.players);
+        console.log("playersArray: "+ gameToChange.playersArray);
         API.updateGame(gameToChange._id, gameToChange)
             .then(res => this.loadGames())
             .catch(err => console.log(err));
@@ -53,6 +57,7 @@ class Find extends Component {
                         return (
                             <GameListItem
                             key = {game._id}
+                            id = {game._id}
                             user = {game.user}
                             sport = {game.sport}
                             players = {game.players}

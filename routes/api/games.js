@@ -12,9 +12,12 @@ router.route("/")
   router.route("/future")
     .get(gamesController.findFuture);
 // Matches with "/api/games/:id" can delete 
-router.route("/:id")
+  router.route("/:id")
+    .get(gamesController.findById)
     .delete(gamesController.remove)
     .put(gamesController.update);
+  
+
   //.get(booksController.findById)
   //.put(booksController.update)
   //.delete(booksController.remove);

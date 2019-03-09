@@ -14,7 +14,10 @@ var GameSchema = new Schema({
      type: String
   },
   players: {
-    type: String
+    type: Number
+  },
+  playersArray: {
+    type: Array
   },
   time: {
     type: String
@@ -30,7 +33,7 @@ var GameSchema = new Schema({
       type: String
   },
   user: {
-      tupe: String
+      type: String
   }
 });
 
