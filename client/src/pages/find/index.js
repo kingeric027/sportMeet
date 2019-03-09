@@ -34,15 +34,24 @@ class Find extends Component {
 
 
     updateGame = index => {
+        const user = auth0Client.getProfile().name;
         if(!auth0Client.isAuthenticated()){  //If not logged in make user log in before joining game.
             auth0Client.signIn();
         }
         const gameToChange = this.state.games[index];
-        console.log(gameToChange);
-        gameToChange.players = gameToChange.players - 1;
-        gameToChange.playersArray.push( auth0Client.getProfile().name )
-        console.log("new players: " + gameToChange.players);
-        console.log("playersArray: "+ gameToChange.playersArray);
+        console.log("User: "+user);
+        console.log("player Array initial: "+ gameToChange.playersArray);
+        console.log("User in game: "+ gameToChange.playersArray.includes(auth0Client.getProfile().name));
+        if(gameToChange.playersArray.includes(user)){
+
+            gameToChange.players = gameToChange.players + 1;
+            gameToChange.playersArray.splice(gameToChange.playersArray.indexOf(user),1);
+            console.log("players Array after: "+ gameToChange.playersArray);
+        } else {
+            gameToChange.players = gameToChange.players - 1;
+            gameToChange.playersArray.push(user);
+            console.log("player Array after: "+gameToChange.playersArray);
+        }
         API.updateGame(gameToChange._id, gameToChange)
             .then(res => this.loadGames())
             .catch(err => console.log(err));
@@ -57,6 +66,7 @@ class Find extends Component {
 
                 <GameList>
                     {this.state.games.map((game, index) =>{
+                        console.log(game.playersArray);
                         return (
                             <GameListItem
                             key = {game._id}
@@ -64,12 +74,13 @@ class Find extends Component {
                             user = {game.user}
                             sport = {game.sport}
                             players = {game.players}
+                            playersArray = {game.playersArray}
                             time = {game.time}
                             date = {game.date}
                             address = {game.address}
                             coords = {game.location}
                             DeleteFunction = {() => this.deleteGame(game._id)}
-                            JoinFunction = {() => this.updateGame(index)} //Need to decrease players by one
+                            UpdateFunction = {() => this.updateGame(index)} //Need to decrease players by one
                             >
                             </GameListItem>
 

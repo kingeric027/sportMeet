@@ -35,9 +35,10 @@ class ThisGame extends Component {
             <Navbar></Navbar>
             <Container>
                 <h3>{this.state.game.user}'s {this.state.game.sport} game</h3>
-                <h5>{this.state.game.date}, {this.state.time}</h5>
+                <h5>{moment(this.state.game.date).format("MMM Do YYYY")}, {this.state.game.time}</h5>
                 <h5>{this.state.game.address}</h5>
                 <p>Skill Level: {this.state.game.skill}</p>
+                <p>Players: {this.state.game.playersArray}</p>
                 
             </Container>
         </div>
