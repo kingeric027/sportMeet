@@ -15,8 +15,8 @@ class Start extends Component {
         formToggle:0,  //The formToggle allows users to switch between input form and map with next/back button
         sport:"",
         skill:"",
-        playerAmount:"",
-        playerArray:[],
+        players:"",
+        playersArray:[],
         date:"",
         time:"",
         user: "Anonymous", 
@@ -48,8 +48,8 @@ class Start extends Component {
         const data = {
             sport: this.state.sport,
             skill: this.state.skill,
-            players: this.state.playerAmount,
-            playerArray: this.state.playerArray,
+            players: this.state.players,
+            playersArray: this.state.playersArray,
             time: moment(this.state.time, "HH:MM A").format("h:MM A"),
             date: this.state.date,
             location: this.state.location,
@@ -115,7 +115,7 @@ class Start extends Component {
                     <option value="Football">Football</option>
                     <option value="Soccer">Soccer</option>
                     <option value="Hockey">Hockey</option>
-                    <option value="Tenis">Tennis</option>
+                    <option value="Tennis">Tennis</option>
                     <option value="Ultimate Frisbee">Ultimate Frisbee</option>
                 </select>
 
@@ -128,8 +128,8 @@ class Start extends Component {
                     <option value="5">5 Expert</option>
                 </select>
 
-            <label htmlFor="playerAmount">What is the maximum number of players you can add to your game?</label>
-                <select name = "playerAmount" id = "playerAmount" onChange = {this.handleInputChange}>
+            <label htmlFor="players">What is the maximum number of players you can add to your game?</label>
+                <select name = "players" id = "players" onChange = {this.handleInputChange}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
