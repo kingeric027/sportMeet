@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {Row, Col, Container} from "../../components/Grid";
 import API from "../../utils/API";
 import Navbar from "../../components/navbar/index";
-import Map from "../../components/findMap";
+import Comment from "../../components/comments/index";
 import moment from 'moment';
 
 class ThisGame extends Component {
@@ -39,6 +39,7 @@ class ThisGame extends Component {
                 <h5>{this.state.game.address}</h5>
                 <p>Skill Level: {this.state.game.skill}</p>
                 <p>Players: {this.state.game.playersArray}</p>
+                <Comment></Comment>
                 
             </Container>
         </div>

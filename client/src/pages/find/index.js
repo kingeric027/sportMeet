@@ -5,6 +5,7 @@ import {Row, Col, Container} from "../../components/Grid";
 import API from "../../utils/API";
 import Navbar from "../../components/navbar/index";
 import Map from "../../components/findMap";
+
 import {GameList, GameListItem} from '../../components/gameItem';
 import auth0Client from "../../Auth/authentication";
 
