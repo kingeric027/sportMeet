@@ -29,6 +29,10 @@ class ThisGame extends Component {
             .catch(err => console.log(err));
     }
 
+    handleComment = () =>{
+        
+    }
+
     render(){
         return (
         <div>

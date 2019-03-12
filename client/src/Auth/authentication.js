@@ -6,7 +6,7 @@ import auth0 from 'auth0-js';
           domain: 'kingeric.auth0.com',
           audience: 'https://kingeric.auth0.com/userinfo',
           clientID: 'RgypgNKbpL15E9tPKlmrOYbnEGfaX9UJ',
-          redirectUri: 'http://localhost:3000/callback',
+          redirectUri: process.env.NODE_ENV === 'development' ? 'http://localhost:3000/callback' : 'https://infinite-beyond-14444.herokuapp.com/callback',
           responseType: 'id_token',
           scope: 'openid profile'
         });
