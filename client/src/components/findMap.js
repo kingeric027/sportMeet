@@ -182,6 +182,7 @@ games: this.props.gamesArray,
   *
   * @param event
   */
+
  
 render(){
 const AsyncMap = withScriptjs(
@@ -230,7 +231,6 @@ let map;
    map = <div>
      <div>
       <div className="form-group">
-       <label htmlFor="">Address</label>
        <input type="text" name="address" className="form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.address }/>
       </div>
      </div>
