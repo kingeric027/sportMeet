@@ -105,7 +105,7 @@ class Start extends Component {
         <div>
             <Navbar></Navbar>
             <div className = "container">
-                <h1>Start a Game</h1>
+                <h3>Start a Game</h3>
             
             {this.state.formToggle===0 ?(
                 <form>

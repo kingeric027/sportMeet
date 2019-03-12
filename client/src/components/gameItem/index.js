@@ -4,6 +4,7 @@ import { Container, Row, Col } from "../Grid";
 import moment from 'moment';
 import {Link, withRouter} from 'react-router-dom';
 import auth0Client from "../../Auth/authentication";
+import './style.css';
 
 // BookList renders a bootstrap list item
 export function GameList({ children }) {
@@ -27,10 +28,8 @@ export function GameList({ children }) {
     ))
     return (
       <li className="list-group-item">
-        <Container>
-          <Row>
-            <Col size="xs-8 sm-9">
-              
+        
+          <Row>      
               <GameLink></GameLink>
               <p>Spots Available: {props.players}</p>
               <p>{moment(props.date).format("MMM Do YYYY")}, {moment(props.time, "HH:MM A").format("h:MM A")}</p>
@@ -42,9 +41,8 @@ export function GameList({ children }) {
                 <button type="button" className="btn btn-outline-success" id={props.id} onClick={props.UpdateFunction}>Join Game</button>
               )}
             <button onClick = {props.DeleteFunction}>Delete</button> 
-            </Col>
           </Row>
-        </Container>
+       
       </li>
     );
   }

@@ -62,10 +62,11 @@ class Find extends Component {
         <div>
             <Navbar></Navbar>
             <Container>
-                <h1>Upcoming Games</h1>
-
-                <GameList>
-                    {this.state.games.map((game, index) =>{
+                <h3>Upcoming Games</h3>
+                <Row>
+                    <Col size="md-4">
+                        <GameList>
+                        {this.state.games.map((game, index) =>{
                         console.log(game.playersArray);
                         return (
                             <GameListItem
@@ -85,19 +86,24 @@ class Find extends Component {
                             </GameListItem>
 
                         )
-                    })}
-                </GameList>
-                <div>
-                    <Map
-                    gamesArray = {this.state.games }
-                    google = {this.props.google}
-                    center = {{lat: 44.9740, lng: -93.227}}
-                    height = '300px'
-                    zoom = {12}
-                    >
-                    
-                    </Map>
-                </div>
+                        })}
+                        </GameList>
+                        </Col>
+
+                        <Col size="md-8">
+                            <div>
+                            <Map
+                                gamesArray = {this.state.games }
+                                google = {this.props.google}
+                                center = {{lat: 44.9740, lng: -93.227}}
+                                height = '300px'
+                                zoom = {12}
+                            >
+                            </Map>
+                            </div>
+                        </Col>
+                    </Row>
+                
             </Container>
         </div>
         )
