@@ -1,0 +1,15 @@
+h1 {
+    color:  #49496e;
+}
+
+.start-btns {
+    background-color: #49496e;
+    color: white; 
+    margin-bottom: 20px;
+}
+
+.start-btns:hover {
+    background-color: rgb(174, 179, 184);
+    color: rgb(34, 33, 33);
+
+}

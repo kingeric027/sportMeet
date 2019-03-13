@@ -5,9 +5,9 @@ import {Row, Col, Container} from "../../components/Grid";
 import API from "../../utils/API";
 import Navbar from "../../components/navbar/index";
 import Map from "../../components/findMap";
+import auth0Client from "../../Auth/authentication";
 
 import {GameList, GameListItem} from '../../components/gameItem';
-import auth0Client from "../../Auth/authentication";
 
 class Find extends Component {
     state = {
@@ -15,6 +15,9 @@ class Find extends Component {
     };
 
     componentDidMount(){
+        if(!auth0Client.isAuthenticated()){
+            auth0Client.signIn();
+        }
         this.loadGames();
         console.log(this.state.games);
     }
@@ -98,7 +101,7 @@ class Find extends Component {
                                 google = {this.props.google}
                                 center = {{lat: 44.9740, lng: -93.227}}
                                 height = '300px'
-                                zoom = {12}
+                                zoom = {10}
                             >
                             </Map>
                             </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import auth0Client from '../../Auth/authentication';
+import "./style.css";
 
 
 class Home extends Component {
@@ -21,11 +22,11 @@ class Home extends Component {
 
             <div className = "container">
             <Link to = "/start">
-            <button type="button" className="btn btn-primary btn-lg btn-block">Start a game</button>
+            <button type="button" className="btn btn-lg btn-block start-btns">Start a game</button>
             </Link>
            
             <Link to = "/find">
-            <button type="button" className="btn btn-primary btn-lg btn-block">Find a game</button>
+            <button type="button" className="btn btn-lg btn-block start-btns">Find a game</button>
             </Link>
             </div>
         </div>

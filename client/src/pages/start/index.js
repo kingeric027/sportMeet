@@ -24,7 +24,8 @@ class Start extends Component {
         location:{
             lat: "",
             lng: ""
-        }
+        },
+        comments:[]
     }
 
     toggle = event =>{
@@ -54,7 +55,8 @@ class Start extends Component {
             date: this.state.date,
             location: this.state.location,
             address: this.state.address,  
-            user: this.state.user
+            user: this.state.user,
+            comments: this.state.comments
             
         }
         console.log(data);
