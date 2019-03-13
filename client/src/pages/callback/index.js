@@ -6,7 +6,7 @@ import auth0Client from '../../Auth/authentication';
 class Callback extends Component {
   async componentDidMount() {
     await auth0Client.handleAuthentication();
-    this.props.history.replace('/');
+    this.props.history.replace('https://infinite-beyond-14444.herokuapp.com');
   }
   render() {
     const style = {
