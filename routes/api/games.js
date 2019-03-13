@@ -6,8 +6,7 @@ const gamesController = require("../../controllers/gamesController");
 router.route("/")
     .get(gamesController.findAll)
     .post(gamesController.create);
-  //.get(booksController.findAll)
-  //.post(booksController.create);
+  //
 
   router.route("/future")
     .get(gamesController.findFuture);
@@ -18,8 +17,7 @@ router.route("/")
     .put(gamesController.update);
   
 
-  //.get(booksController.findById)
-  //.put(booksController.update)
-  //.delete(booksController.remove);
+  
+  
 
 module.exports = router;
