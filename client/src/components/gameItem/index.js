@@ -23,24 +23,27 @@ export function GameList({ children }) {
         to ={"/games/" + props.id}
       >
       
-      <h5>{props.user} is Playing {props.sport}</h5>
+      <h5 className = "card-header card-background gameListHeader">{props.user} is Playing {props.sport}</h5>
       </Link>
     ))
     return (
       <li className="list-group-item">
-        
           <Row>      
+              <div class="card">
               <GameLink></GameLink>
-              <p>Spots Available: {props.players}</p>
+              <div class="card-body">
+              <h5 class="card-title">Spots Available: {props.players}</h5>
               <p>{moment(props.date).format("MMM Do YYYY")}, {moment(props.time, "HH:MM A").format("h:MM A")}</p>
               <p>{props.address}</p>
-
-            {props.playersArray.includes(currentUser) ?( //user is in game
-                <button type="button" className="btn btn-outline-success" id={props.id} onClick={props.UpdateFunction}>Leave Game</button>
+              {props.playersArray.includes(currentUser) ?( //user is in game
+                <button type="button" className="btn btn-leave" id={props.id} onClick={props.UpdateFunction}>Leave Game</button>
               ):(
-                <button type="button" className="btn btn-outline-success" id={props.id} onClick={props.UpdateFunction}>Join Game</button>
+                <button type="button" className="btn btn-join" id={props.id} onClick={props.UpdateFunction}>Join Game</button>
               )}
-            <button onClick = {props.DeleteFunction}>Delete</button> 
+              <button onClick = {props.DeleteFunction}>Delete</button> 
+              </div>
+            </div>
+            
           </Row>
        
       </li>

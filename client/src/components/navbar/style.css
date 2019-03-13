@@ -1,0 +1,14 @@
+nav {
+    background-color: #49496e;
+}
+
+.log-btn {
+    background-color:  rgb(174, 179, 184);
+    color:rgb(34, 33, 33);
+}
+
+.log-btn:hover {
+    background-color: #49496e;
+    color: white;
+
+}

@@ -1,66 +1,25 @@
-import React, { Component } from 'react';
- 
+import React from "react";
+import { Container, Row, Col } from "../Grid";
+import moment from 'moment';
+import {Link, withRouter} from 'react-router-dom';
+import auth0Client from "../../Auth/authentication";
 
-
-class CommentBox extends Component {
-  constructor(props) {
-    super(props);
+// BookList renders a bootstrap list item
+export function CommentList({ children }) {
+    return <ul className="list-group">{children}</ul>;
   }
+  
 
-  addComment(e) {
-    // Prevent the default behaviour of form submit
-    e.preventDefault();
-   
-    // Get the value of the comment box
-    // and make sure it not some empty strings
-    const comment = e.target.elements.comment.value.trim();
-    const name = this.props.user;
-   
-    // Make sure name and comment boxes are filled
-    if (name && comment) {
-      const commentObject = { name, comment };
-   
-      this.props.handleAddComment(commentObject); //have
-   
-      // Publish comment
-      /*global Ably*/
-      //const channel = Ably.channels.get('comments');
-      //channel.publish('add_comment', commentObject, err => {
-      //  if (err) {
-      //    console.log('Unable to publish message; err = ' + err.message);
-      //  }
-      }; //);
-   
-      // Clear input fields
-      e.target.elements.comment.value = '';
-      e.target.elements.name.value = '';
-    }
-
- 
-  render() {
+  // RecipeListItem renders a bootstrap list item containing data from the recipe api call
+  export function CommentListItem(
+    props
+  ) {
     return (
-      <div>
-        <h5 className="title">Kindly leave your thoughts below</h5>
-        <form >
-          <div className="field">
-            <div className="control">
-              <input type="text" className="input" name="name" placeholder="Your name"/>
-            </div>
-          </div>
-          <div className="field">
-            <div className="control">
-              <textarea className="textarea" name="comment" placeholder="Add a comment"></textarea>
-            </div>
-          </div>
-          <div className="field">
-            <div className="control">
-              <button className="button is-primary">Submit</button>
-            </div>
-          </div>
-        </form>
-      </div>
+      <li className="list-group-item">
+          
+        <p>{props.user} + ":" </p>
+        <p>{props.text}</p>
+
+      </li>
     );
   }
-}
- 
-export default CommentBox;

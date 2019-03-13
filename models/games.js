@@ -34,6 +34,9 @@ var GameSchema = new Schema({
   },
   user: {
       type: String
+  },
+  comments: {
+    type: Array
   }
 });
 
