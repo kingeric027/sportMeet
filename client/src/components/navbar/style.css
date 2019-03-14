@@ -1,5 +1,5 @@
 nav {
-    background-color: #49496e;
+    background-color: orange /* #49496e */;
 }
 
 .log-btn {
@@ -11,4 +11,9 @@ nav {
     background-color: #49496e;
     color: white;
 
+}
+
+#logo_navbar {
+    height: 50px;
+    width: 100px;
 }
