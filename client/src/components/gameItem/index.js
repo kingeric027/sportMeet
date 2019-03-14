@@ -40,7 +40,7 @@ export function GameList({ children }) {
               ):(
                 <button type="button" className="btn btn-join" id={props.id} onClick={props.UpdateFunction}>Join Game</button>
               )}
-              <button onClick = {props.DeleteFunction}>Delete</button> 
+            {/*  <button onClick = {props.DeleteFunction}>Delete</button>  */}
               </div>
             </div>
             
