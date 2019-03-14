@@ -113,7 +113,7 @@ class ThisGame extends Component {
                                 placeholder = "Chat!">
                                 </textarea>
 
-                            <button type="button" class="btn btn-primary btn-block commentBtn">Submit</button>
+                            <button type="button" class="btn btn-primary btn-block commentBtn" onClick = {this.handleComment}>Submit</button>
                     </Col>
                 </Row>
                     
