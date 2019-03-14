@@ -15,6 +15,9 @@ class ThisGame extends Component {
     };
 
     componentDidMount(){
+        if(!auth0Client.isAuthenticated()){
+            auth0Client.signIn();
+        }
         this.loadGame();
     }
 
@@ -77,11 +80,13 @@ class ThisGame extends Component {
                             <h5>{this.state.game.address}</h5>
                             <p>Skill Level: {this.state.game.skill}</p>
                             <p>Players: {this.state.game.playersArray}</p>
+                            
+                            <ul>Players:</ul>
                     </Col>
     
                     <Col size = "md-6">
                     
-                        <div class="card">
+                        <div class="card divCard">
                         <h5 class="card-header">Chat Box</h5>
                         <div class="card-body">
                             {this.state.commentsArray.map(c =>{
@@ -99,19 +104,15 @@ class ThisGame extends Component {
                             })}
                         </div>
                         </div>
-                    
-                  
+            
                             <textarea 
-                            name = "currentComment"
-                            value = {this.state.currentComment}
-                            onChange = {this.handleInputChange}
-                            placeholder = "Chat!">
-                            </textarea>
-                            <button onClick = {this.handleComment} type="success">
-                            Submit
-                            </button>
+                                name = "currentComment"
+                                value = {this.state.currentComment}
+                                onChange = {this.handleInputChange}
+                                placeholder = "Chat!">
+                                </textarea>
 
-
+                            <button type="button" class="btn btn-primary btn-block commentBtn">Submit</button>
                     </Col>
                 </Row>
                     

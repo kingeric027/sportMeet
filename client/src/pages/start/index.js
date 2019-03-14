@@ -157,6 +157,7 @@ class Start extends Component {
             ) : (
                 <div>
                 <h5>Where are you playing?</h5>
+                <button id = "back" onClick={this.togglet}>Back</button> 
                 <div id = "mapDiv">
                 <Map
                     google = {this.props.google}
@@ -168,7 +169,7 @@ class Start extends Component {
                /> 
                 </div>
                 
-               <button id = "back" onClick={this.togglet}>Back</button> 
+               
                <Button></Button> 
                {/* <button type="button" class="btn btn-primary btn-lg btn-block" onClick = { this.onSubmit}>Submit</button> */}
                 </div>

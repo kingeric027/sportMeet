@@ -2,6 +2,7 @@ import React from 'react'
 import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
 import Autocomplete from 'react-google-autocomplete';
 import Geocode from "react-geocode";
+import "./Map.css";
 Geocode.setApiKey("AIzaSyCyfDoFnHAEssmLqnPDD_5qwrNyQk-8_nw");
 Geocode.enableDebug();
 class Map extends React.Component{
@@ -292,20 +293,20 @@ let map;
    map = <div>
      <div>
       <div className="form-group">
-       <label htmlFor="">Address</label>
-       <input type="text" name="address" className="form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.address }/>
+       <label className = "label" htmlFor="">Address</label>
+       <input type="text" name="address" className="input form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.address }/>
       </div>
      </div>
      <AsyncMap
       googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyfDoFnHAEssmLqnPDD_5qwrNyQk-8_nw&libraries=places"
       loadingElement={
-       <div style={{ height: `100%` }} />
+       <div className = "loadingElement" style={{ height: `100%` }} />
       }
       containerElement={
-       <div style={{ height: this.props.height }} />
+       <div className = "containerElement" style={{ height: this.props.height }} />
       }
       mapElement={
-       <div style={{ height: `100%` }} />
+       <div className = "mapElement" style={{ height: `85%` }} />
       }
      />
     </div>
