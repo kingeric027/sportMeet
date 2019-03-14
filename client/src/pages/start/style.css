@@ -1,0 +1,11 @@
+@media(min-width: 905px) {
+    .container {
+        align-content: center;
+    }
+}
+
+@media(max-width: 900px) {
+    form {
+        text-align: center;
+    }
+}

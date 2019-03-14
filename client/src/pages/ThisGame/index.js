@@ -11,7 +11,8 @@ class ThisGame extends Component {
     state = {
         game:{},
         currentComment:"",
-        commentsArray:[]
+        commentsArray:[],
+        playersArray:[]
     };
 
     componentDidMount(){
@@ -26,7 +27,8 @@ class ThisGame extends Component {
         API.getGame(this.props.match.params.id)
         .then(res => this.setState( {
             game:res.data,
-            commentsArray: res.data.comments} ))
+            commentsArray: res.data.comments,
+            playersArray: res.data.playersArray} ))
         .catch(err => console.log(err));
     }
 
@@ -79,9 +81,8 @@ class ThisGame extends Component {
                             <h5>{moment(this.state.game.date).format("MMM Do YYYY")}, {this.state.game.time}</h5>
                             <h5>{this.state.game.address}</h5>
                             <p>Skill Level: {this.state.game.skill}</p>
-                            <p>Players: {this.state.game.playersArray}</p>
+                            <p>Players: {this.state.game.playersArray}</p>       
                             
-                            <ul>Players:</ul>
                     </Col>
     
                     <Col size = "md-6">

@@ -15,7 +15,7 @@ class Home extends Component {
         <div>
             <div className="jumbotron jumbotron-fluid">
                 <div className="container">
-                    <h1 className="display-4">SportMeet</h1>
+                    <img src="../img/sportMeet_logo.png" alt="sportMeet logo" id="logo_home"></img>
                     <p className="lead">The App for connecting people who play sports.</p>
                 </div>
             </div>

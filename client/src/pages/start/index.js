@@ -106,9 +106,10 @@ class Start extends Component {
         return (
         <div>
             <Navbar></Navbar>
+            <br></br>
             <div className = "container">
                 <h3>Start a Game</h3>
-            
+            <br></br>
             {this.state.formToggle===0 ?(
                 <form>
                 <label htmlFor="sport">Sport: </label>
@@ -120,7 +121,7 @@ class Start extends Component {
                     <option value="Tennis">Tennis</option>
                     <option value="Ultimate Frisbee">Ultimate Frisbee</option>
                 </select>
-
+            <br></br>
             <label htmlFor="skill">What is your groups overall skill level?</label>
                 <select name = "skill" id = "selectSkill" onChange = {this.handleInputChange}>
                     <option value="1">1 Beginner</option>
@@ -129,8 +130,8 @@ class Start extends Component {
                     <option value="4">4</option>
                     <option value="5">5 Expert</option>
                 </select>
-
-            <label htmlFor="players">What is the maximum number of players you can add to your game?</label>
+            <br></br>
+            <label htmlFor="players">What is the max number of players you can add to your game?</label>
                 <select name = "players" id = "players" onChange = {this.handleInputChange}>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -141,15 +142,15 @@ class Start extends Component {
                     <option value="7">7</option>
                     <option value="8">8</option>
                 </select>
-            
+            <br></br>
             <div>
                 Time: <input name="time" type="time" id="time" onChange = {this.handleInputChange}></input>
             </div>
-
+            <br></br>
             <div>
                 Date: <input name="date" type = "date" id="date" onChange = {this.handleInputChange}></input>
             </div>
-
+            <br></br>
             <div>
                 <button id = "next" onClick = {this.toggle}>Next</button>
             </div>

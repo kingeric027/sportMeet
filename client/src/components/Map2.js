@@ -306,7 +306,11 @@ let map;
        <div className = "containerElement" style={{ height: this.props.height }} />
       }
       mapElement={
+<<<<<<< HEAD
        <div className = "mapElement" style={{ height: `85%` }} />
+=======
+       <div style={{ height: `85%` }} />
+>>>>>>> ba12234ab3810b7cb8f8bff594d00601a7732924
       }
      />
     </div>

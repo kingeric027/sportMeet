@@ -13,7 +13,7 @@ const HomeLink = withRouter(({ history }) => (
     onClick={() => { history.push('/') }}
     to ="/"
   >
-    SportMeet
+    <img src="../img/sportMeet_logo.png" alt="sportMeet logo" id="logo_navbar"></img>
   </Link>
 ))
 
