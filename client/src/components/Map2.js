@@ -305,7 +305,7 @@ let map;
        <div style={{ height: this.props.height }} />
       }
       mapElement={
-       <div style={{ height: `100%` }} />
+       <div style={{ height: `85%` }} />
       }
      />
     </div>
