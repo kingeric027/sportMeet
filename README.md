@@ -16,4 +16,4 @@
 
 ## License
 
-## Acknowledgements
+## Acknowledgments
