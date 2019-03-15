@@ -16,8 +16,8 @@ From us at SportMeet, LLC, we present out app, SportMeet.
 
 ### Running locally
 ``` npm start ```
-Runs the app in locally.
-Open http://localhost:3000 to view it in the browser.
+* Runs the app in locally.
+* Open http://localhost:3000 to view it in the browser.
 
 ## Deployment
 * [SportMeet on Heroku](https://sheltered-beyond-48534.herokuapp.com/)
