@@ -35,10 +35,10 @@ Pull requests are welcome.  For major changes, please open an issue first to dis
 Please make sure to update tests as appropriate.
 
 ## Authors
-* **Eric King** - Developer, Primary Tester - [Portfolio], [GitHub]
-* **Kevin Motanya** - Developer, Secondary Tester - [Portfolio], [GitHub]
-* **Paoge Moua** - Developer, Secondary Tester - [Portfolio], [GitHub]
-* **Lydia Nyagitari** - Developer, Secondary Tester - [Portfolio], [GitHub]
+* **Eric King** - Developer, Primary Tester - [Portfolio](https://kingeric027.github.io/My-Portfolio/Eric-King-Portfolio.html), [GitHub](https://github.com/kingeric027)
+* **Kevin Motanya** - Developer, Secondary Tester - [Portfolio](https://kevinmotanya.github.io/), [GitHub](https://github.com/Kevinmotanya)
+* **Paoge Moua** - Developer, Secondary Tester - [Portfolio](https://paogemoua.github.io/), [GitHub](https://github.com/paogemoua)
+* **Lydia Nyagitari** - Developer, Secondary Tester - [Portfolio](https://lydianyagitari.github.io/), [GitHub](https://github.com/lydianyagitari)
 
 ## License
 * [MIT](https://choosealicense.com/licenses/mit/)
