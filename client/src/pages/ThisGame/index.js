@@ -81,7 +81,14 @@ class ThisGame extends Component {
                             <h5>{moment(this.state.game.date).format("MMM Do YYYY")}, {this.state.game.time}</h5>
                             <h5>{this.state.game.address}</h5>
                             <p>Skill Level: {this.state.game.skill}</p>
-                            <p>Players: {this.state.game.playersArray}</p>       
+                            <ul>Players:
+                                {this.state.playersArray.map(p =>{
+                                    return (
+                                        <li>{p}</li>
+                                    )
+                                })}
+                            </ul>
+
                             
                     </Col>
     

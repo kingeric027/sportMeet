@@ -1,4 +1,4 @@
-ul {
+.game-list {
     overflow: scroll;
     height: 500px;
     border: 2px solid gray;
