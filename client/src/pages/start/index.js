@@ -156,8 +156,8 @@ class Start extends Component {
             </form>
             ) : (
                 <div>
-                <h5>Where are you playing?</h5>
                 <button id = "back" onClick={this.toggle}>Back</button> 
+                <h5>Where are you playing?</h5>
                 <div id = "mapDiv">
                 <Map
                     google = {this.props.google}

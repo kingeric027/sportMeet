@@ -293,7 +293,7 @@ let map;
    map = <div>
      <div>
       <div className="form-group">
-       <label className = "label" htmlFor="">Address</label>
+      {/* <label className = "label" htmlFor="">Address</label> */}
        <input type="text" name="address" className="input form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.address }/>
       </div>
      </div>
