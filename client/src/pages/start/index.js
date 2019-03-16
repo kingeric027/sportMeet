@@ -6,7 +6,7 @@ import Map from "../../components/Map2";
 import API from "../../utils/API";
 import auth0Client from '../../Auth/authentication';
 import moment from 'moment';
-
+import "./style.css"
 
 
 
@@ -107,10 +107,10 @@ class Start extends Component {
         <div>
             <Navbar></Navbar>
             <div className = "container">
-                <h3>Start a Game</h3>
+                <h3 className = "startHeader">Start a Game</h3>
             <br></br>
             {this.state.formToggle===0 ?(
-                <form>
+                <form className = "startForm">
                 <label htmlFor="sport">Sport: </label>
                 <select name = "sport" id = "selectSport" onChange = {this.handleInputChange}>
                     <option value="Basketball">Basketball</option>
@@ -157,7 +157,7 @@ class Start extends Component {
             ) : (
                 <div>
                 <h5>Where are you playing?</h5>
-                <button id = "back" onClick={this.togglet}>Back</button> 
+                <button id = "back" onClick={this.toggle}>Back</button> 
                 <div id = "mapDiv">
                 <Map
                     google = {this.props.google}
