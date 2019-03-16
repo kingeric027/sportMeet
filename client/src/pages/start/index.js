@@ -13,9 +13,9 @@ import moment from 'moment';
 class Start extends Component {
     state = {
         formToggle:0,  //The formToggle allows users to switch between input form and map with next/back button
-        sport:"",
-        skill:"",
-        players:"",
+        sport:"Basketball",
+        skill:"1",
+        players:"1",
         playersArray:[],
         date:"",
         time:"",
@@ -106,7 +106,6 @@ class Start extends Component {
         return (
         <div>
             <Navbar></Navbar>
-            <br></br>
             <div className = "container">
                 <h3>Start a Game</h3>
             <br></br>

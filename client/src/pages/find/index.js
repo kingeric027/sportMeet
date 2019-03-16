@@ -65,7 +65,6 @@ class Find extends Component {
         return (
         <div>
             <Navbar></Navbar>
-            <br></br>
             <Container>
                 <h3>Upcoming Games</h3>
                 <Row>

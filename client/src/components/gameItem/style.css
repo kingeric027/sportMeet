@@ -29,3 +29,7 @@ p {
 .btn-join {
     background-color:rgb(46, 195, 46);
 }
+
+.btn-full {
+    background-color: gray;
+}

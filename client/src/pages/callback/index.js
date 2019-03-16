@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import loading from './callback.png';
+import logo from './sportMeet_logo.png';
 import {withRouter} from 'react-router-dom';
 import auth0Client from '../../Auth/authentication';
 
@@ -24,7 +25,7 @@ class Callback extends Component {
 
     return (
       <div style={style}>
-        <img src={loading} alt="loading"/>
+        <img src={logo} alt="loading"/>
       </div>
     );
   }
