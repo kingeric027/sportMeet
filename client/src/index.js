@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import history from './components/history/index';
 
 import {BrowserRouter} from 'react-router-dom';
-
+import 'dotenv/config'
 
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+console.log("ENV")
+console.log(process.env)
 
 //Might have to put this somewhere else
 const jwt = require('express-jwt');

@@ -46,24 +46,3 @@ class App extends Component {
 
 export default withRouter(App);
 
-
-
-
-
-//class App extends Component {
-//  render() {
-//    return (
-//      <Router>
-//        <div>
-//          <Switch>
-//          <Route exact path = '/callback' component={Callback}/>
-//            <Route exact path = "/" component = {Home} />
-//            <Route exact path = "/start" component = {Start} />
-//            <Route exact path = "/find" component = {Find} />
-//          </Switch>
-//        </div>
-//      </Router>
-//    );
-//  }
-//}
-

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Geocode from "react-geocode";
 import { Link, withRouter } from "react-router-dom";
 import Navbar from "../../components/navbar/index";
-import Map from "../../components/Map2";
+import Map from "../../components/Map";
 import API from "../../utils/API";
 import auth0Client from '../../Auth/authentication';
 import moment from 'moment';

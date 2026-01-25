@@ -2,7 +2,6 @@ const db = require("../models");
 const moment = require('moment');
 const current = moment();
 
-// Defining methods for the booksController
 module.exports = {
   findAll: function(req, res) {  //return all games
     db.Game
@@ -19,7 +18,8 @@ module.exports = {
       }
     })
     .then(dbModel => res.json(dbModel))
-    .catch(err => res.status(422).json(err));
+    .catch(err => {
+      return res.status(422).json(err)});
   },
   findById: function(req, res) { //Find a specific game
     db.Game

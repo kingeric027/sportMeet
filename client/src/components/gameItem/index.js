@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Container, Row, Col } from "../Grid";
+import { Row } from "../Grid";
 import moment from 'moment';
 import {Link, withRouter} from 'react-router-dom';
 import auth0Client from "../../Auth/authentication";
