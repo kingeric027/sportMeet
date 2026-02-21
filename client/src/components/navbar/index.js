@@ -3,6 +3,7 @@ import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import auth0Client from "../../Auth/authentication";
 import "./style.css";
+import SecondaryButton from '../shared/SecondaryButton';
 
 // this also works with react-router-native
 
@@ -58,7 +59,8 @@ function NavBar(props) {
             auth0Client.isAuthenticated() &&
             <div>
               <label className="mr-2 text-white">{auth0Client.getProfile().name}</label>
-              <button className="btn btn-dark log-btn" onClick={() => {signOut()}}>Sign Out</button>
+              <SecondaryButton label="Sign Out" onClick={signOut} />
+              {/* <button className="btn btn-dark log-btn" onClick={() => {signOut()}}>Sign Out</button> */}
             </div>
           }
         </nav>

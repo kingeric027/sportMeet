@@ -1,26 +1,26 @@
 import React, { Component } from "react";
-import Geocode from "react-geocode";
-import { Link, withRouter } from "react-router-dom";
 import Navbar from "../../components/navbar/index";
 import Map from "../../components/Map";
 import API from "../../utils/API";
 import auth0Client from '../../Auth/authentication';
 import moment from 'moment';
 import "./style.css"
+import InfoForm from "./InfoForm";
+import FormFooter from "./FormFooter";
 
 
 
 class Start extends Component {
     state = {
-        formToggle:0,  //The formToggle allows users to switch between input form and map with next/back button
-        sport:"Basketball",
-        skill:"1",
-        players:"1",
-        playersArray:[],
-        date:"",
-        time:"",
+        formToggle: 0,
+        sport: "Basketball",
+        skill: "1",
+        players: "1",
+        playersArray: [],
+        date: "",
+        time: "",
         user: "Anonymous", 
-        address:"",
+        address: "",
         location:{
             lat: "",
             lng: ""
@@ -28,24 +28,19 @@ class Start extends Component {
         comments:[]
     }
 
-    toggle = event =>{
-        if(event.target.id === "next"){  //Go to map
-            this.setState({
-                formToggle:1
-            })
-        } else if(event.target.id === "back"){  //Go back to form
-            this.setState({
-                formToggle:0
-            })
-        }
+    onNext = () => {
+        this.setState({
+            formToggle: this.state.formToggle + 1
+        })
     }
 
- 
-    
-    //function for submitting the data (still needs to be done)
-    onSubmit = () => {
-        console.log("submit");
-        
+    onBack = () => {
+        this.setState({
+            formToggle: this.state.formToggle - 1
+        })
+    }
+
+    onSubmit = () => {        
         const data = {
             sport: this.state.sport,
             skill: this.state.skill,
@@ -57,19 +52,14 @@ class Start extends Component {
             address: this.state.address,  
             user: this.state.user,
             comments: this.state.comments
-            
         }
-        console.log(data);
         API.saveGame(data);
-        
     };
 
-    //Function for updating the state as the dropdowns are updated
     handleInputChange = event => {
-        console.log(event);
-        const {name, value} = event.target;
+        const {id, value} = event.target;
         this.setState({
-            [name]: value
+            [id]: value
         });
     }
 
@@ -93,89 +83,53 @@ class Start extends Component {
         }
     }; 
 
+    nextDisabled() {
+        const disabled = !this.state.sport || !this.state.skill || !this.state.players || !this.state.time || !this.state.date;
+        return disabled;
+    }
+
     render(){
-        const Button = withRouter(({ history }) => (
-            <button
-              type='button'
-              className = "btn btn-primary btn-lg btn-block"
-             onClick={() => {this.onSubmit(); history.push('/find') }} 
-            >
-              Submit
-            </button>
-          ))
         return (
         <div>
-            <Navbar></Navbar>
+            <Navbar />
             <div className = "container">
                 <h3 className = "startHeader">Start a Game</h3>
-            <br></br>
-            {this.state.formToggle===0 ?(
-                <form className = "startForm">
-                <label htmlFor="sport">Sport: </label>
-                <select name = "sport" id = "selectSport" onChange = {this.handleInputChange}>
-                    <option value="Basketball">Basketball</option>
-                    <option value="Football">Football</option>
-                    <option value="Soccer">Soccer</option>
-                    <option value="Hockey">Hockey</option>
-                    <option value="Tennis">Tennis</option>
-                    <option value="Ultimate Frisbee">Ultimate Frisbee</option>
-                </select>
-            <br></br>
-            <label htmlFor="skill">What is your groups overall skill level?</label>
-                <select name = "skill" id = "selectSkill" onChange = {this.handleInputChange}>
-                    <option value="1">1 Beginner</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5 Expert</option>
-                </select>
-            <br></br>
-            <label htmlFor="players">What is the max number of players you can add to your game?</label>
-                <select name = "players" id = "players" onChange = {this.handleInputChange}>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                </select>
-            <br></br>
-            <div>
-                Time: <input name="time" type="time" id="time" onChange = {this.handleInputChange}></input>
-            </div>
-            <br></br>
-            <div>
-                Date: <input name="date" type = "date" id="date" onChange = {this.handleInputChange}></input>
-            </div>
-            <br></br>
-            <div>
-                <button id = "next" onClick = {this.toggle}>Next</button>
-            </div>
-            </form>
-            ) : (
+                <br></br>
+                {this.state.formToggle===0 ? (
                 <div>
-                <button id = "back" onClick={this.toggle}>Back</button> 
-                <h5>Where are you playing?</h5>
-                <div id = "mapDiv">
-                <Map
-                    google = {this.props.google}
-                    center = {{lat: 44.9740, lng: -93.227}}
-                    height = '300px'
-                    zoom = {12}
-                    dragMarker = {true}
-                    onMapChange ={this.onMapChange}
-               /> 
+                    <InfoForm 
+                        handleInputChange={this.handleInputChange}
+                        sport={this.state.sport}
+                        skill={this.state.skill}
+                        players={this.state.players}
+                        time={this.state.time}
+                        date={this.state.date}
+                    /> 
                 </div>
                 
-               
-               <Button></Button> 
-               {/* <button type="button" class="btn btn-primary btn-lg btn-block" onClick = { this.onSubmit}>Submit</button> */}
+                ) : (
+                    <div>
+                        <h5>Where are you playing?</h5>
+                        <div>
+                            <Map
+                                google = {this.props.google}
+                                center = {{lat: 44.9740, lng: -93.227}}
+                                height = '300px'
+                                zoom = {12}
+                                dragMarker = {true}
+                                onMapChange ={this.onMapChange}
+                            /> 
+                        </div>
+                    </div>
+                )}
+                <div className="footer-container">
+                    <FormFooter 
+                        onNext={this.onNext} 
+                        onBack={this.onBack} 
+                        onSubmit={this.onSubmit}
+                        formToggle={this.state.formToggle} 
+                        nextDisabled={this.nextDisabled()} />
                 </div>
-            )}
-        
-                
             </div> 
             
         </div>

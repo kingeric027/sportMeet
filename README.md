@@ -15,6 +15,7 @@ From us at SportMeet, LLC, we present out app, SportMeet.
 * Run ``` npm install ``` in directory to install node-modules.
 
 ### Running locally
+* Requires Node Version 16. NVM can be used to install and switch to specific node versions: https://github.com/nvm-sh/nvm
 ``` npm start ```
 * Runs the app in locally.
 * Open http://localhost:3000 to view it in the browser.
@@ -24,10 +25,14 @@ From us at SportMeet, LLC, we present out app, SportMeet.
 
 ## Built With
 * MERN stack
-* [Material-UI](https://material-ui.com/)
-* [React BootStrap](https://react-bootstrap.github.io/)
-* [Redux](https://redux.js.org/)
+* MongoDB
+* Express
+* React
+* Node
+
+Includes
 * [Auth0](https://auth0.com/)
+* [React BootStrap](https://react-bootstrap.github.io/)
 
 ## Contributing
 Pull requests are welcome.  For major changes, please open an issue first to discuss what you would like to change.

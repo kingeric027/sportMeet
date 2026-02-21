@@ -23,6 +23,26 @@ constructor( props ){
 activeMarker:{}
   }
  }
+
+setMapData(latitude, longitude) {
+  Geocode.fromLatLng( latitude, longitude).then(
+    response => { 
+        const address = response.results[0].formatted_address;
+        this.props.onMapChange(latitude, longitude, address);
+        this.setState({
+            address: ( address ) ? address : '',
+            markerPosition: {
+                lat: latitude,
+                lng: longitude
+            },
+            mapPosition: {
+              lat: latitude,
+              lng: longitude
+            }
+        })
+    }
+  )
+}
 /**
   * Get the current address from the default map position and set those values in the state
   */
@@ -31,70 +51,12 @@ activeMarker:{}
   if (navigator && navigator.geolocation){
       navigator.geolocation.getCurrentPosition(pos => {
           const coords = pos.coords;
-          Geocode.fromLatLng( coords.latitude, coords.longitude).then(
-              response => { 
-                  const address = response.results[0].formatted_address;
-                  this.props.onMapChange(coords.latitude, coords.longitude, address);
-                  this.setState({
-                      address: ( address ) ? address : '',
-                      markerPosition: {
-                          lat: coords.latitude,
-                          lng: coords.longitude
-                      },
-                      mapPosition: {
-                        lat: coords.latitude,
-                        lng: coords.longitude
-                      }
-                  })
-              }
-          )
+          this.setMapData(coords.latitude, coords.longitude);
       });
   } else {
-      Geocode.fromLatLng(this.props.center.lat, this.props.center.lng).then(
-          response => {
-              const address = response.results[0].formatted_address;
-              this.props.onMapChange(this.props.center.lat, this.props.center.lng, address);
-              this.setState( {
-                  address: ( address ) ? address : '',
-                  mapPosition: {
-                    lat: this.props.center.lat,
-                    lng: this.props.center.lng,
-                  },
-                  markerPosition: {
-                    lat: this.props.center.lat,
-                    lng: this.props.center.lng
-                  }
-              });
-          }
-      )
+    this.setMapData(this.props.center.lat, this.props.center.lng);
   }
 }
-
-  /*
- componentDidMount() {
-  Geocode.fromLatLng( this.state.mapPosition.lat , this.state.mapPosition.lng ).then(
-   response => {
-    const address = response.results[0].formatted_address,
-     addressArray =  response.results[0].address_components,
-     city = this.getCity( addressArray ),
-     area = this.getArea( addressArray ),
-     state = this.getState( addressArray );
-  
-    console.log( 'city', city, area, state );
-  
-    this.setState( {
-     address: ( address ) ? address : '',
-     area: ( area ) ? area : '',
-     city: ( city ) ? city : '',
-     state: ( state ) ? state : '',
-    } )
-   },
-   error => {
-    console.error(error);
-   }
-  );
- };
-*/
 
 /**
   * Component should only update ( meaning re-render ), when the user selects the address, or drags the pin
@@ -218,7 +180,6 @@ const address = place.formatted_address,
   * @param event
   */
  onMarkerDragEnd = ( event ) => {
-  console.log( 'event', event );
   let newLat = event.latLng.lat(),
    newLng = event.latLng.lng(),
    addressArray = [];

@@ -8,6 +8,11 @@ nav {
     color:rgb(34, 33, 33);
 }
 
+.generic-btn {
+    background-color: #49496e;
+    color: white;
+}
+
 .log-btn:hover {
     background-color: #49496e;
     color: white;

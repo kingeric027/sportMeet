@@ -3,7 +3,7 @@ import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "reac
 import Geocode from "react-geocode";
 Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
 Geocode.enableDebug();
-class Map extends React.Component{
+class FindMap extends React.Component{
 constructor( props ){
   super( props );
   this.state = {
@@ -31,7 +31,6 @@ constructor( props ){
   */
 
  componentDidMount(){
-   console.log(this.props.gamesArray)
   if (navigator && navigator.geolocation){
       navigator.geolocation.getCurrentPosition(pos => {
           const coords = pos.coords;
@@ -165,8 +164,6 @@ constructor( props ){
   * @param event
   */
  handleToggleOpen(games){
-   console.log('Clicked!');
-   console.log(this.state.windowLocation);
   this.setState({
     windowLocation : {
       lat : games.location.lat,
@@ -185,19 +182,6 @@ const AsyncMap = withScriptjs(
       defaultZoom={this.props.zoom}
       defaultCenter={{ lat: this.state.mapPosition.lat, lng: this.state.mapPosition.lng }}
      >
-      {/* For Auto complete Search Box 
-      <Autocomplete
-       style={{
-        width: '100%',
-        height: '40px',
-        paddingLeft: '16px',
-        marginTop: '2px',
-        marginBottom: '100px'
-       }}
-       onPlaceSelected={ this.onPlaceSelected }
-       types={['geocode']}
-      />  */}
-{/*Marker. Need to get a marker for each game*/}
 {this.props.gamesArray.map( (games, index) => (
     <Marker
     draggable = {false}
@@ -252,4 +236,4 @@ let map;
   return( map )
  }
 }
-export default Map
+export default FindMap

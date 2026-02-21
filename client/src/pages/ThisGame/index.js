@@ -23,7 +23,6 @@ class ThisGame extends Component {
     }
 
     loadGame = () => {
-        console.log("Game ID: "+this.props.match.params.id)
         API.getGame(this.props.match.params.id)
         .then(res => this.setState( {
             game:res.data,
@@ -36,7 +35,6 @@ class ThisGame extends Component {
         const gameToChange = this.state.games[index];
         console.log(gameToChange);
         gameToChange.players = gameToChange.players - 1;
-        console.log("new players: " + gameToChange.players);
         API.updateGame(gameToChange._id, gameToChange)
             .then(res => this.loadGame())
             .catch(err => console.log(err));
@@ -65,9 +63,6 @@ class ThisGame extends Component {
         API.updateGame(gameToChange._id, gameToChange)
             .then(res => this.loadGame())
             .catch(err => console.log(err));
- 
-        //e.target.elements.comment.value = '';
-        console.log(this.state.game)
     }
 
     render(){

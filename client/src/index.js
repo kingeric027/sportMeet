@@ -8,8 +8,6 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-console.log("ENV")
-console.log(process.env)
 
 //Might have to put this somewhere else
 const jwt = require('express-jwt');
