@@ -37,7 +37,6 @@ Includes
 ## Contributing
 Pull requests are welcome.  For major changes, please open an issue first to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
 
 ## Authors
 * **Eric King** - Developer, Primary Tester - [Portfolio](https://kingeric027.github.io/My-Portfolio/Eric-King-Portfolio.html), [GitHub](https://github.com/kingeric027)
